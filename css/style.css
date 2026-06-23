@@ -1,0 +1,341 @@
+/* =========================================================
+   기본 변수 (색, 폰트, 여백) — 다크모드는 [data-theme="dark"]로 전환됩니다
+   ========================================================= */
+:root {
+  --bg: #faf8f5;
+  --bg-elevated: #ffffff;
+  --text: #1c1b19;
+  --text-muted: #6f6a62;
+  --accent: #b5562f;          /* ✏️ 포인트 컬러 — 원하는 색으로 바꿔도 좋아요 */
+  --accent-soft: #e8d9cf;
+  --border: #e6e1d8;
+  --shadow: 0 18px 40px -20px rgba(28, 27, 25, 0.25);
+
+  --font-display: "Playfair Display", serif;
+  --font-body: "Pretendard", "Apple SD Gothic Neo", sans-serif;
+
+  --gap: clamp(10px, 1.6vw, 22px);
+  --radius: 14px;
+  --max-width: 1280px;
+
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: #15141a;
+  --bg-elevated: #1d1c23;
+  --text: #ece9e4;
+  --text-muted: #9b968d;
+  --accent: #e08a5e;
+  --accent-soft: #3a2b22;
+  --border: #2c2a32;
+  --shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.7);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+img { max-width: 100%; display: block; }
+
+code {
+  background: var(--accent-soft);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 0.9em;
+}
+
+/* =========================================================
+   헤더
+   ========================================================= */
+.site-header {
+  position: relative;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: clamp(48px, 8vw, 96px) var(--gap) clamp(28px, 5vw, 56px);
+}
+
+.header-inner { max-width: 720px; }
+
+.eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 14px;
+  font-weight: 600;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 7vw, 4.6rem);
+  line-height: 1.05;
+  margin: 0 0 16px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.tagline {
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  color: var(--text-muted);
+  margin: 0;
+  max-width: 46ch;
+  line-height: 1.6;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: clamp(40px, 7vw, 72px);
+  right: var(--gap);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-size: 1.1rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+.theme-toggle:hover { transform: scale(1.08); }
+.theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] .theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
+
+/* =========================================================
+   카테고리 필터
+   ========================================================= */
+.filter-bar {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--gap) clamp(24px, 4vw, 40px);
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  padding: 9px 20px;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: all 0.25s ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* =========================================================
+   갤러리 (Masonry 느낌의 반응형 그리드)
+   ========================================================= */
+.gallery {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--gap) clamp(60px, 8vw, 100px);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-auto-rows: 10px;
+  gap: var(--gap);
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transform: translateY(14px);
+  animation: rise 0.6s ease forwards;
+}
+
+@keyframes rise {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img { transform: scale(1.06); }
+
+.gallery-item .caption {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 14px 16px 12px;
+  background: linear-gradient(to top, rgba(0,0,0,0.65), transparent);
+  color: #fff;
+  font-size: 0.85rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .caption { opacity: 1; }
+
+.empty-message {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 60px var(--gap);
+}
+
+/* =========================================================
+   About / Contact
+   ========================================================= */
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin: 0 0 20px;
+}
+
+.about {
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.about-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: clamp(60px, 9vw, 110px) var(--gap);
+}
+
+.about-text {
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  line-height: 1.9;
+  color: var(--text-muted);
+}
+
+.contact {
+  text-align: center;
+  padding: clamp(50px, 8vw, 90px) var(--gap) 50px;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.contact-link {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  padding-bottom: 4px;
+  border-bottom: 2px solid var(--accent);
+  transition: color 0.2s ease;
+}
+.contact-link:hover { color: var(--accent); }
+
+.copyright {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* =========================================================
+   라이트박스
+   ========================================================= */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 9, 8, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: fadeIn 0.25s ease;
+}
+
+.lightbox[hidden] {
+  display: none;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.lb-image {
+  max-width: 88vw;
+  max-height: 82vh;
+  border-radius: 8px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+}
+
+.lb-caption {
+  position: absolute;
+  bottom: 28px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #f1ede6;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+.lb-close, .lb-arrow {
+  position: absolute;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  transition: background 0.2s ease;
+}
+.lb-close:hover, .lb-arrow:hover { background: rgba(255,255,255,0.2); }
+
+.lb-close {
+  top: 24px;
+  right: 24px;
+  width: 42px;
+  height: 42px;
+  font-size: 1.1rem;
+}
+
+.lb-arrow {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  font-size: 1.8rem;
+}
+
+.lb-prev { left: 16px; }
+.lb-next { right: 16px; }
+
+@media (max-width: 640px) {
+  .lb-arrow { width: 40px; height: 40px; font-size: 1.4rem; }
+  .lb-prev { left: 6px; }
+  .lb-next { right: 6px; }
+  .theme-toggle { position: static; margin-top: 18px; }
+  .site-header { display: flex; flex-direction: column; }
+}
