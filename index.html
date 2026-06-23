@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>김은아 | Photo Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ============================================= -->
+  <!-- ✏️ 여기를 바꾸세요 1: 헤더(이름 / 한 줄 소개)  -->
+  <!-- ============================================= -->
+  <header class="site-header">
+    <div class="header-inner">
+      <p class="eyebrow">PHOTOGRAPHY &amp; VISUAL WORKS</p>
+      <h1 class="name">김은아</h1>
+      <p class="tagline">빛과 순간을 기록합니다 — 인물, 풍경, 그리고 작업물을 담은 공간</p>
+    </div>
+    <button id="theme-toggle" class="theme-toggle" aria-label="다크모드 전환">
+      <span class="icon icon-sun">☀</span>
+      <span class="icon icon-moon">☾</span>
+    </button>
+  </header>
+
+  <!-- 카테고리 필터 -->
+  <nav class="filter-bar" id="filter-bar">
+    <button class="filter-btn active" data-filter="전체">전체</button>
+    <!-- 카테고리 버튼은 JS가 gallery.json을 읽어서 자동으로 추가합니다 -->
+  </nav>
+
+  <!-- 갤러리 -->
+  <main>
+    <section id="gallery" class="gallery" aria-label="작품 갤러리">
+      <!-- 사진 카드들이 JS로 자동 생성됩니다 -->
+    </section>
+    <p id="empty-message" class="empty-message" hidden>
+      아직 사진이 없어요. <code>images/카테고리/</code> 폴더에 사진을 넣고
+      <code>python scripts/build_gallery.py</code>를 실행해보세요.
+    </p>
+  </main>
+
+  <!-- ============================================= -->
+  <!-- ✏️ 여기를 바꾸세요 2: 자기소개(About)          -->
+  <!-- ============================================= -->
+  <section id="about" class="about">
+    <div class="about-inner">
+      <h2 class="section-title">About</h2>
+      <p class="about-text">
+        안녕하세요, 사진과 디자인으로 순간을 기록하는 김은아입니다.<br />
+        사람의 표정, 풍경의 결, 작업의 디테일을 좋아합니다.<br />
+        이 문장을 자신만의 소개로 바꿔보세요 — <code>index.html</code>의
+        <code>about-text</code> 부분을 수정하면 됩니다.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================= -->
+  <!-- ✏️ 여기를 바꾸세요 3: 연락처(이메일 / SNS)     -->
+  <!-- ============================================= -->
+  <footer id="contact" class="contact">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-links">
+      <a href="mailto:your-email@example.com" class="contact-link">your-email@example.com</a>
+      <a href="https://instagram.com/yourid" target="_blank" rel="noopener" class="contact-link">Instagram</a>
+      <a href="https://github.com/yourid" target="_blank" rel="noopener" class="contact-link">GitHub</a>
+    </div>
+    <p class="copyright">© 2026 김은아. All rights reserved.</p>
+  </footer>
+
+  <!-- 라이트박스 -->
+  <div id="lightbox" class="lightbox" hidden>
+    <button class="lb-close" id="lb-close" aria-label="닫기">✕</button>
+    <button class="lb-arrow lb-prev" id="lb-prev" aria-label="이전 사진">‹</button>
+    <img id="lb-image" class="lb-image" src="" alt="" />
+    <button class="lb-arrow lb-next" id="lb-next" aria-label="다음 사진">›</button>
+    <p class="lb-caption" id="lb-caption"></p>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

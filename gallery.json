@@ -1,0 +1,83 @@
+[
+  {
+    "id": "인물-001",
+    "title": "sample-portrait-1",
+    "category": "인물",
+    "full": "assets/photos/인물-001-full.jpg",
+    "thumb": "assets/photos/인물-001-thumb.jpg",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "인물-002",
+    "title": "sample-portrait-2",
+    "category": "인물",
+    "full": "assets/photos/인물-002-full.jpg",
+    "thumb": "assets/photos/인물-002-thumb.jpg",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "인물-003",
+    "title": "sample-portrait-3",
+    "category": "인물",
+    "full": "assets/photos/인물-003-full.jpg",
+    "thumb": "assets/photos/인물-003-thumb.jpg",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "작업물-001",
+    "title": "sample-work-1",
+    "category": "작업물",
+    "full": "assets/photos/작업물-001-full.jpg",
+    "thumb": "assets/photos/작업물-001-thumb.jpg",
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "id": "작업물-002",
+    "title": "sample-work-2",
+    "category": "작업물",
+    "full": "assets/photos/작업물-002-full.jpg",
+    "thumb": "assets/photos/작업물-002-thumb.jpg",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "id": "작업물-003",
+    "title": "sample-work-3",
+    "category": "작업물",
+    "full": "assets/photos/작업물-003-full.jpg",
+    "thumb": "assets/photos/작업물-003-thumb.jpg",
+    "width": 198,
+    "height": 256
+  },
+  {
+    "id": "풍경-001",
+    "title": "sample-landscape-1",
+    "category": "풍경",
+    "full": "assets/photos/풍경-001-full.jpg",
+    "thumb": "assets/photos/풍경-001-thumb.jpg",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "id": "풍경-002",
+    "title": "sample-landscape-2",
+    "category": "풍경",
+    "full": "assets/photos/풍경-002-full.jpg",
+    "thumb": "assets/photos/풍경-002-thumb.jpg",
+    "width": 1600,
+    "height": 893
+  },
+  {
+    "id": "풍경-003",
+    "title": "sample-landscape-3",
+    "category": "풍경",
+    "full": "assets/photos/풍경-003-full.jpg",
+    "thumb": "assets/photos/풍경-003-thumb.jpg",
+    "width": 1024,
+    "height": 1536
+  }
+]
