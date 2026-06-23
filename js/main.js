@@ -15,9 +15,6 @@ const lbClose = document.getElementById("lb-close");
 const lbPrev = document.getElementById("lb-prev");
 const lbNext = document.getElementById("lb-next");
 
-const ROW_HEIGHT = 10; // style.css의 grid-auto-rows 값과 맞춰야 합니다
-const ROW_GAP = 22;
-
 let allPhotos = [];      // gallery.json 전체 내용
 let visiblePhotos = [];  // 현재 필터에 맞게 화면에 보이는 사진들
 let currentIndex = 0;    // 라이트박스에서 몇 번째 사진을 보고 있는지
@@ -83,38 +80,26 @@ function renderGallery(filter) {
     item.className = "gallery-item";
     item.style.animationDelay = `${Math.min(index * 0.04, 0.6)}s`;
 
+    const frame = document.createElement("div");
+    frame.className = "frame";
+
     const img = document.createElement("img");
     img.src = photo.thumb;
     img.alt = photo.title;
     img.loading = "lazy";
-
-    // 사진의 원본 비율에 맞춰 그리드의 높이를 계산 (masonry 효과)
-    img.addEventListener("load", () => {
-      const aspectRatio = photo.height / photo.width;
-      const rowSpan = Math.ceil(
-        (img.clientWidth * aspectRatio + ROW_GAP) / (ROW_HEIGHT + ROW_GAP)
-      );
-      item.style.gridRowEnd = `span ${rowSpan}`;
-    });
+    frame.appendChild(img);
 
     const caption = document.createElement("figcaption");
     caption.className = "caption";
-    caption.textContent = photo.title;
+    caption.innerHTML = `<span class="title">${photo.title}</span><span class="cat-tag">${photo.category}</span>`;
 
-    item.appendChild(img);
+    item.appendChild(frame);
     item.appendChild(caption);
     item.addEventListener("click", () => openLightbox(index));
 
     galleryEl.appendChild(item);
   });
 }
-
-// 화면 크기가 바뀌면 카드 높이를 다시 계산해야 깨지지 않아요
-window.addEventListener("resize", () => {
-  renderGallery(
-    document.querySelector(".filter-btn.active")?.dataset.filter || "전체"
-  );
-});
 
 // ---------------------------------------------------------
 // 4. 라이트박스 (사진 크게 보기 + 좌우 넘기기)

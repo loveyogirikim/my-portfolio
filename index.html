@@ -6,7 +6,7 @@
 <title>김은아 | Photo Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -14,22 +14,30 @@
   <!-- ============================================= -->
   <!-- ✏️ 여기를 바꾸세요 1: 헤더(이름 / 한 줄 소개)  -->
   <!-- ============================================= -->
+  <div class="page-frame">
+
   <header class="site-header">
+    <div class="header-top">
+      <span class="mono-tag">PORTFOLIO / NO. 01</span>
+      <button id="theme-toggle" class="theme-toggle" aria-label="다크모드 전환">
+        <span class="icon icon-sun">☀</span>
+        <span class="icon icon-moon">☾</span>
+      </button>
+    </div>
     <div class="header-inner">
       <p class="eyebrow">PHOTOGRAPHY &amp; VISUAL WORKS</p>
       <h1 class="name">김은아</h1>
       <p class="tagline">빛과 순간을 기록합니다 — 인물, 풍경, 그리고 작업물을 담은 공간</p>
     </div>
-    <button id="theme-toggle" class="theme-toggle" aria-label="다크모드 전환">
-      <span class="icon icon-sun">☀</span>
-      <span class="icon icon-moon">☾</span>
-    </button>
   </header>
 
   <!-- 카테고리 필터 -->
   <nav class="filter-bar" id="filter-bar">
-    <button class="filter-btn active" data-filter="전체">전체</button>
-    <!-- 카테고리 버튼은 JS가 gallery.json을 읽어서 자동으로 추가합니다 -->
+    <span class="section-index">01 — 색인</span>
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="전체">전체</button>
+      <!-- 카테고리 버튼은 JS가 gallery.json을 읽어서 자동으로 추가합니다 -->
+    </div>
   </nav>
 
   <!-- 갤러리 -->
@@ -48,6 +56,7 @@
   <!-- ============================================= -->
   <section id="about" class="about">
     <div class="about-inner">
+      <span class="section-index">02 — 소개</span>
       <h2 class="section-title">About</h2>
       <p class="about-text">
         안녕하세요, 사진과 디자인으로 순간을 기록하는 김은아입니다.<br />
@@ -62,7 +71,8 @@
   <!-- ✏️ 여기를 바꾸세요 3: 연락처(이메일 / SNS)     -->
   <!-- ============================================= -->
   <footer id="contact" class="contact">
-    <h2 class="section-title">Contact</h2>
+    <span class="section-index">03 — 연락</span>
+    <h2 class="section-title">Let's talk</h2>
     <div class="contact-links">
       <a href="mailto:your-email@example.com" class="contact-link">your-email@example.com</a>
       <a href="https://instagram.com/yourid" target="_blank" rel="noopener" class="contact-link">Instagram</a>
@@ -70,6 +80,8 @@
     </div>
     <p class="copyright">© 2026 김은아. All rights reserved.</p>
   </footer>
+
+  </div><!-- /.page-frame -->
 
   <!-- 라이트박스 -->
   <div id="lightbox" class="lightbox" hidden>
